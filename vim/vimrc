@@ -1,0 +1,59 @@
+"Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'flazz/vim-colorschemes'
+Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'christoomey/vim-system-copy'
+call plug#end()
+
+"VIM colorscheme
+colorscheme molokai
+
+syntax on
+set hlsearch
+set number
+set ruler
+set backspace=2
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+:command! W w
+:command! Q q
+:command! Wq wq
+:command! WQ wq
+
+"Set leader to comma
+let mapleader = ","
+inoremap '' <ESC>
+nnoremap <CR> o<Esc>
+nnoremap <C-S> :update<cr>
+inoremap <C-S> <Esc>:update<cr>gi
+noremap :ne :NERDTreeToggle
+"Turn off highlight search by pressing <Esc> in normal mode
+map <leader>c :nohlsearch<CR>
+"Edit/source vimrc
+map <leader>re :execute "edit " . $MYVIMRC<CR>
+map <leader>rs :execute "source " . $MYVIMRC<CR>
+
+:set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+:augroup END
+
+"YCM setting
+let g:ycm_autoclose_preview_window_after_completion=1
+
+"NERDTree setting
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+set clipboard+=unnamedplus
