@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'christoomey/vim-system-copy'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 "VIM colorscheme
@@ -56,4 +57,8 @@ let g:ycm_autoclose_preview_window_after_completion=1
 "NERDTree setting
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
+"Use system clipboard for * register
 set clipboard+=unnamedplus
+
+"ctags
+set tags=./tags;,tags
