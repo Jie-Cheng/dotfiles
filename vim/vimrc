@@ -21,10 +21,11 @@ set hlsearch
 set number
 set ruler
 set backspace=2
-set tabstop=2
-set shiftwidth=2
-set shiftround
+
 set expandtab
+set smarttab
+set shiftround
+set shiftwidth=4
 
 :command! W w
 :command! Q q
@@ -34,15 +35,13 @@ set expandtab
 "Set leader to comma
 let mapleader = ","
 inoremap '' <ESC>
-nnoremap <CR> o<Esc>
-nnoremap <C-S> :update<cr>
-inoremap <C-S> <Esc>:update<cr>gi
+nnoremap <CR> o<ESC>
+nnoremap <C-S> :update<CR>
+inoremap <C-S> <ESC>:update<CR>gi
 noremap :ne :NERDTreeToggle
-"Turn off highlight search by pressing <Esc> in normal mode
 map <leader>c :nohlsearch<CR>
-"Edit/source vimrc
-map <leader>re :execute "edit " . $MYVIMRC<CR>
-map <leader>rs :execute "source " . $MYVIMRC<CR>
+nnoremap <leader>re :edit $MYVIMRC<CR>
+nnoremap <leader>rs :source $MYVIMRC<CR>
 
 :set number relativenumber
 :augroup numbertoggle
