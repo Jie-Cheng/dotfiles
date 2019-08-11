@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'christoomey/vim-system-copy'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 "VIM colorscheme
@@ -38,8 +39,9 @@ inoremap '' <ESC>
 nnoremap <CR> o<ESC>
 nnoremap <C-S> :update<CR>
 inoremap <C-S> <ESC>:update<CR>gi
-noremap :ne :NERDTreeToggle
+map <leader>n :NERDTreeToggle<CR>
 map <leader>c :nohlsearch<CR>
+map <leader>a :Ack 
 nnoremap <leader>re :edit $MYVIMRC<CR>
 nnoremap <leader>rs :source $MYVIMRC<CR>
 
@@ -52,6 +54,7 @@ nnoremap <leader>rs :source $MYVIMRC<CR>
 
 "YCM setting
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_confirm_extra_conf = 0
 
 "NERDTree setting
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -59,5 +62,29 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 "Use system clipboard for * register
 set clipboard+=unnamedplus
 
-"ctags
-set tags=./tags;,tags
+" tags
+set tags=./.tags;,.tags
+" Markers for project directories for gutentags
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" Name of tag file
+let g:gutentags_ctags_tagfile = '.tags'
+" Create ~/.cache/tags if not exist
+let s:vim_tags = expand('~/.cache/tags')
+if !isdirectory(s:vim_tags)
+    silent! call mkdir(s:vim_tags, 'p')
+endif
+" Put tag file in ~/.cache/tags rather than project directory
+let g:gutentags_cache_dir = s:vim_tags
+" Use  ctags and gtags
+let g:gutentags_modules = []
+if executable('ctags')
+    let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+    let g:gutentags_modules += ['gtags_cscope']
+endif
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+" universal ctags
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
