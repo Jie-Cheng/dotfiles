@@ -40,10 +40,10 @@ nnoremap <CR> o<ESC>
 nnoremap <C-S> :update<CR>
 inoremap <C-S> <ESC>:update<CR>gi
 map <leader>n :NERDTreeToggle<CR>
-map <leader>c :nohlsearch<CR>
 map <leader>a :Ack 
 nnoremap <leader>re :edit $MYVIMRC<CR>
 nnoremap <leader>rs :source $MYVIMRC<CR>
+nmap <leader>c "+
 
 :set number relativenumber
 :augroup numbertoggle
@@ -58,6 +58,10 @@ let g:ycm_confirm_extra_conf = 0
 
 "NERDTree setting
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+"Ctrlp setting
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = 'build'
 
 "Use system clipboard for * register
 set clipboard+=unnamedplus
