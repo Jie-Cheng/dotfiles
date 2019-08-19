@@ -9,9 +9,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'christoomey/vim-system-copy'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mileszs/ack.vim'
+Plug 'justinmk/vim-sneak'
 call plug#end()
 
 "VIM colorscheme
