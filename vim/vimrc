@@ -92,3 +92,11 @@ let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 " universal ctags
 let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+
+" vim-airline
+" Automatically displays all buffers when there's only one tab open.
+let g:airline#extensions#tabline#enabled = 1
+" Truncate long branch names to a fixed length
+let g:airline#extensions#branch#displayed_head_limit = 10
+" vim-airline-themes
+let g:airline_theme='dark'
